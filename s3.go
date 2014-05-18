@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"github.com/crowdmob/goamz/aws"
 	"github.com/crowdmob/goamz/s3"
+	"time"
 )
 
 const (
@@ -23,7 +24,7 @@ func EnsureBucket(accessKey, secretKey, regionName, bucketName string, acl s3.AC
 		}
 	}
 
-	auth, err := aws.GetAuth(accessKey, secretKey)
+	auth, err := aws.GetAuth(accessKey, secretKey, "", time.Time{})
 	if err != nil {
 		return nil, err
 	}
